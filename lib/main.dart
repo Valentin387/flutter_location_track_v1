@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// I cannot delete this for now
 class MyAppState extends ChangeNotifier {
   var current = 0;
 
@@ -61,28 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
           return Scaffold(
             body: Row(
               children: [
-                SafeArea(
-                  child: NavigationRail(
-                    extended: constraints.maxWidth >= 600,
-                    destinations: [
-                      NavigationRailDestination(
-                        icon: Icon(Icons.home),
-                        label: Text('Home'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.favorite),
-                        label: Text('Favorites'),
-                      ),
-                    ],
-                    selectedIndex: selectedIndex,
-                    onDestinationSelected: (value) {
-                      setState(() {
-                        selectedIndex = value;
-                      });
-                      print('selected: $value');
-                    },
-                  ),
-                ),
                 Expanded(
                   child: Container(
                     color: Theme.of(context).colorScheme.primaryContainer,
@@ -157,15 +136,18 @@ class BigCard extends StatelessWidget {
 
     final style = theme.textTheme.displayMedium!.copyWith(
       color: theme.colorScheme.onPrimary,
+      fontSize: 24,
     );
 
     return Card(
       color: theme.colorScheme.primary,
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10.0),
         child: Text(
           text01,
           style: style,
+          textAlign: TextAlign.center,
+
         ),
       ),
     );
